@@ -1,4 +1,4 @@
-class ConnectionView extends Backbone.View {
+ConnectionView = Backbone.View.extend {
   template: _.template $("#template-socket-connection").html()
 
   events:

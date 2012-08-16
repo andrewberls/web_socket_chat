@@ -12,3 +12,6 @@ rake watch : Watch source files for changes and build on save
 rake start : Start the redis, eventmachine, and thin servers
 rake stop  : Stop server processes
 ```
+
+### To Do
+Redis persistence is still not perfect - if you experience some weirdness, don't panic.

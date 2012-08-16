@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Web Sockets Demo :: Burwell Designs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Web Sockets Demo</a>
+
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well">
+            <h1>Server Connection</h1>
+
+            <div class="alert alert-success if-web-sockets" style="display:none">
+              Your browser supports web sockets.
+            </div>
+
+            <div class="alert alert-error no-web-sockets" style="display:none">
+              Sorry, your browser does not support web sockets. Please download Chrome or Firefox.
+            </div>
+
+            <p>Configured to connect to the following: <br />
+              <code>ws://localhost:8080</code>
+            </p>
+
+            <p style="margin-top: 1.5em" id="connect"></p>
+          </div>
+        </div>
+
+        <div class="span4">
+          <div class="row-fluid">
+            <h2>Realtime messages</h2>
+            <div id="messages"></div>
+
+            <textarea id="message-input"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer style="clear: both;">
+        <p>&copy; 2012 Burwell Designs</p>
+      </footer>
+
+    </div><!-- .container-fluid -->
+
+    <!-- TEMPLATES -->
+
+    <script type="text/html" id="template-socket-connection">
+      <a class="btn btn-primary <%= connected ? 'disabled' : '' %>"><i class="icon-cog icon-white"></i> Connect</a>
+      <a class="btn btn-danger  <%= connected ? '' : 'disabled' %>"><i class="icon-remove icon-white"></i> Disconnect</a>
+
+      <% plural = (count > 1) ? 's' : '' %>
+      <p class="client-count">There <%= (count > 1) ? 'are' : 'is' %> <%= count %> client<%= plural %> connected.</p>
+    </script>
+
+    <script type="text/html" id="template-socket-message">
+      <div class='message'>
+        <p><%= message %></p>
+      </div>
+    </script>
+
+    <script type="text/html" id="template-socket-message-list">
+      <div class='message-list'></div>
+    </script>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.js"></script>
+    <script src="js/backbone.js"></script>
+    <script src="js/app.js"></script>
+
+  </body>
+</html>

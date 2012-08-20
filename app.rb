@@ -6,6 +6,7 @@ require 'redis'
 require 'json'
 
 $redis = Redis.new(:host => "127.0.0.1", :port => 6379)
+$redis.set("messages:counter", 1) # Initialize the global message counter
 
 class App < Sinatra::Base
 

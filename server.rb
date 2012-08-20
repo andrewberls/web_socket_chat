@@ -14,7 +14,6 @@ require 'json'
 
 EventMachine.run do
   redis = EM::Hiredis.connect
-  redis.set("messages:counter", 1)
 
   EventMachine::WebSocket.start(:host => '0.0.0.0', :port => 8080) do |socket|
     socket.onopen do
